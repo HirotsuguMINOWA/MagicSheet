@@ -1,0 +1,68 @@
+\documentclass[10pt]{jarticle}
+\usepackage{mgsh}
+\usepackage{enumerate}
+\usepackage{ascmac} % screen
+
+\usepackage{geometry} % 余白など指定
+\geometry{left=15mm,right=15mm,top=20mm,bottom=20mm} % 余白指定
+
+\SetupMagicSheet{question/name=Question,solution/name=Answer} % 大問(設問)のラベルが左記に変更される
+
+\IsVisible{true}  % true=表示，コメントアウト(コマンド無)/false=非表示
+
+\begin{document}
+
+\center{\Large{Magic Sheetの簡易説明}}
+\begin{enumerate}
+  \item 大問の設置
+    \begin{itemize}
+      \item 書式：\textbackslash begin\{question\}〜\textbackslash end\{question\}
+      \item 例：  \textbackslash begin\{question\}大問設置．個々の問題を記述 \textbackslash end\{question\} 
+    \item 結果：\begin{screen}\begin{question}大問設置．個々の問題を記述 \end{question}\end{screen}
+      \item 補足：大問のラベルを変更したい場合は\textbackslash SetupMgshSheetsコマンドを通して変更できます 
+    \end{itemize}                                                                               
+  \item 大問の解答の設置
+    \begin{itemize}
+      \item 書式：\textbackslash begin\{solution\}〜\textbackslash end\{solution\}
+      \item 例：  \textbackslash begin\{solution\}大問解答の設置． \textbackslash end\{solution\} 
+    \item 結果：\begin{screen}\begin{solution} 大問解答の設置． \end{solution} \end{screen}
+      \item 補足：大問の解答のラベルを変更したい場合は\textbackslash SetupMgshSheetsコマンドを通して変更できます 
+    \end{itemize}
+  \item 穴抜き問題の例：
+    \begin{itemize}
+      \item 書式：\textbackslash mgshBox\{解答\}\{ラベル名\}\{解答への捕捉(表示)\}
+        \begin{itemize}
+          \item 解答：穴抜き問題の解答
+          \item ラベル名：設問を識別するための識別子 
+        \item 解答への捕捉(表示)：欄内に補記したいメッセージ文
+      \end{itemize}
+    \item 例：\textbackslash mgshBox\{answer\}\{testLabel\}\{(アルファベットで解答する事)\}
+    \item 結果：\mgshBox{answer}{testLabel}{(アルファベットで解答する事)}
+  \end{itemize}
+  \item 設問番号の自動付与
+    \begin{itemize}
+      \item 書式：\textbackslash mgshNo\{ラベル名\}
+        \begin{itemize}
+          \item ラベル名：設問を識別するための識別子
+        \end{itemize}
+      \item 例： \textbackslash mgshNo\{testLabel\}
+      \item 結果： \mgshNo{testLabel}
+    \end{itemize}
+  \item 設問番号の参照:
+    \begin{itemize}
+      \item 書式：\textbackslash mgshRef\{ラベル名\}
+        \begin{itemize}
+          \item ラベル名：設問を識別するための識別子 
+        \end{itemize}
+      \item 例：  \textbackslash mgshRef\{testLabel\} 
+      \item 結果：\mgshRef{testLabel} ※上記の\textbackslash mgshNo\{testLabel\}を参照している
+    \end{itemize}
+  \item 解答欄の生成,欄のサイズ指定可
+    \begin{itemize}
+      \item 書式: \textbackslash mgshBoxShape\{width\}\{height\}\{解答\}\{ラベル名\}
+      \item 例：  \textbackslash mgshBoxShape\{100\}\{20\}\{答え\}\{testBoxShape\}
+      \item 結果：\mgshBoxShape{100}{20}{答え}{testBoxShape}
+    \end{itemize}
+\end{enumerate}
+
+\end{document}                                                  

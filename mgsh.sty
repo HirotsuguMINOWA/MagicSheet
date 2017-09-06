@@ -1,0 +1,62 @@
+\usepackage{ifthen}     % 必須. ifthen構文用
+\usepackage[]{exsheets} %必須．内部で使用
+\newcounter{nombre}     % 逐次番号割り当て用．必須
+
+% 大問のDefaultラベルの定義
+\SetupExSheets{question/name=問題,solution/name=解答}
+
+\global\newcommand\answer\phantom % 無ければanswerが未定義
+\usepackage{xstring}  % IfSubStr
+\newcommand\SetupMagicSheet[1]{
+  \IfSubStr{#1}{solution/print=false}
+  {
+    \global\renewcommand\answer\phantom
+    \SetupExSheets{#1}
+  }
+  {
+  \IfSubStr{#1}{solution/print=true}
+    {
+    \global\renewcommand\answer\textnormal
+    \SetupExSheets{#1}
+    }
+  }
+}
+
+% IsVisibleコマンド定義
+\newcommand\IsVisible[1]{
+  \ifthenelse{\equal{#1}{true}}
+  {\SetupMagicSheet{solution/print=true}}
+  {
+    \ifthenelse{\equal{#1}{false}}
+    {\SetupMagicSheet{solution/print=false}}
+    {}  % それ以外何もしない
+  }
+}
+\IsVisible{false}    % コマンド呼び出し無しを解答非表示へ
+
+
+%-----------------------------
+% 解答非表示用コマンド定義
+%-----------------------------
+
+
+% 問題番号挿入{ラベル名}
+\newcommand{\mgshNo}[1]{
+  \ifthenelse{\equal{#1}{}}%
+  {[\refstepcounter{nombre}\thenombre]} %true
+  {[\refstepcounter{nombre}{\label{#1}\thenombre]}} %false
+}
+
+% 参照番号挿入{ラベル名}
+\newcommand{\mgshRef}[1]{[\ref{#1}]}
+
+% 問題欄{非表示可な解答}{ラベル名}{解答への捕捉(表示)}
+\newcommand{\mgshBox}[3]{{\mgshNo{#2}} {\Large\fbox{{\normalsize#3}\answer{#1}}}}  
+
+% 問題欄(欄の大きさ指定可){width}{height}{解答}{ラベル名}
+\newcommand{\mgshBoxShape}[4]{{\mgshNo{#4}}{\Large {\framebox(#1,#2){\parbox{#1\unitlength}{\answer{#3}}}}}}  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                  
+%%%%%%%%%%% TODO %%%%%%%%%
+% - 設問番号のナンバーに種類を持たす
