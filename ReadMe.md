@@ -15,3 +15,14 @@ Bug
 
 - Please insert a empty row into next `\IsVisible` command. If not, an error will be occurred.
 - `IsVisible`コマンドの次の行に空白行を入れて下さい. さもなければ，エラーが発生します．
+
+## Explanation / 説明
+
+- The latex source code which generated this image can be gotton from example-mgsh.tex
+
+![](ReadMe/example-mgsh.jpg)
+
+## Published
+本パッケージは次の文献にて出展しております．
+
+- 箕輪弘嗣, Magic Sheet:穴埋め問題などに対応した解答の一括非表示が可能な問題作成支援LaTeXスタイルファイル, 岡山商科大学論叢, 第53巻, 第3号, pp.25-43, 2018.3.
