@@ -13,8 +13,8 @@ This latex style file provides you to switch easily visible / invisible answer f
 Bug
 ---
 
-- Please insert a empty row into next `\IsVisible` command. If not, an error will be occurred.
-- `IsVisible`コマンドの次の行に空白行を入れて下さい. さもなければ，エラーが発生します．
+- [English] Please insert a empty row into next `\IsVisible` command. If not, an error will be occurred.
+- [Japanese] `IsVisible`コマンドの次の行に空白行を入れて下さい. さもなければ，エラーが発生します．
 
 ## Explanation / 説明
 
