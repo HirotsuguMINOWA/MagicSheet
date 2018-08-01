@@ -22,6 +22,12 @@ Bug
 
 ![](ReadMe/example-mgsh.jpg)
 
+## Complement / 補完
+- コマンド名はmgshから始まるよう統一しておりますので，エディタでの補完が容易です
+
+![](ReadMe/Complement_Vim.png)
+
+
 ## Published
 本パッケージは次の文献にて出典しております．
 - 箕輪弘嗣, Magic Sheet:穴埋め問題などに対応した解答の一括非表示が可能な問題作成支援LaTeXスタイルファイル, 岡山商科大学論叢, 第53巻, 第3号, pp.25-43, 2018.3.
